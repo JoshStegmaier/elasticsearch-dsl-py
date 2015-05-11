@@ -326,6 +326,8 @@ class Search(object):
             raise #XXX
 
         d = self.to_dict(count=True)
+        if 'post_filter' in d:
+            del d['post_filter']
         # TODO: failed shards detection
         return self._using.count(
             index=self._index,
